@@ -1,8 +1,10 @@
 <?php 
     require_once("php/function.php");
-    
-
-
+    if (isset($_POST["submit"])){
+        $bar = $_POST["foo"]; 
+    } else {
+        $bar = "fallback";
+    }
 ?>
 
 
@@ -29,6 +31,7 @@
             YourGallery
             </h1>
         </a>
+
         <nav>
             <a href="Index.php" class="selected">Home</a>
             <a href="#">About</a>
@@ -41,13 +44,13 @@
         <div class="loginbar">
             <h1>Welcome</h1>
 
-            <div class="wrap">
-                <input class="username" name="Username" type=”text” placeholder="Username">
+            <form class="wrap" method="Post" action="index.php">
+                <input class="username" name="username" type=”text” placeholder="Username">
                 <span class="usernameS"></span>
-                <input class="password" name="Password" type=”text” placeholder="Password">
+                <input type="password" class="password" name="password" placeholder="Password">
                 <span class="passwordS"></span>
-                <div class="login">Login</div>
-            </div>
+                <button class="login" type="submit">Login</button>
+            </form>
 
             <div class="signup">
                 Not a member? <a href="sign.php">Sign Up</a>

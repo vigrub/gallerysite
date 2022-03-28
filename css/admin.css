@@ -75,6 +75,7 @@ nav a{
 
     margin-inline: 1.5em;
     color:rgb(221, 220, 220);
+    text-decoration: none;
 }
 
 nav a:after{
@@ -96,10 +97,6 @@ nav :not(.selected):hover:after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
-
-nav a{
-    text-decoration: none;
-}
 
 nav .selected:after{
     transform: scaleX(1);

@@ -36,7 +36,7 @@
                 <span class="usernameS"></span>
                 <input type="password" class="password" name="Password" placeholder="Password">
                 <span class="passwordS"></span>
-                <div class="login" type="submit">Sign up</div>
+                <button class="login" type="submit">Sign up</button>
             </form>
 
             <div class="signup">
