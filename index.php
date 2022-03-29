@@ -1,12 +1,16 @@
 <?php 
     require_once("php/function.php");
-    if (isset($_POST["submit"])){
-        $bar = $_POST["foo"]; 
-    } else {
-        $bar = "fallback";
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST"){
+        $username = $_POST["username"] ?? "";
+        $password = $_POST["password"] ?? "";
+        if ($username !== "" && $password !== ""){
+            
+            $password = saltingHash($password, $username);
+
+        }
     }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +20,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link href="sign.php"rel="prerender">
     <link rel="stylesheet" href="css/admin.css">
-    <script src="js/script.js" defer></script>
+    <script src="js/indexscript.js" defer></script>
     <title>Document</title>
 
 </head>
@@ -33,9 +38,9 @@
         </a>
 
         <nav>
-            <a href="Index.php" class="selected">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="index.php" class="selected">Home</a>
+            <a href="about.php">About</a>
+            <a href="contact.php">Contact</a>
         </nav>
     </header>
 
@@ -45,25 +50,18 @@
             <h1>Welcome</h1>
 
             <form class="wrap" method="Post" action="index.php">
-                <input class="username" name="username" type=”text” placeholder="Username">
+                <input class="username" name="username" type=”text” placeholder="Username" required>
                 <span class="usernameS"></span>
-                <input type="password" class="password" name="password" placeholder="Password">
+                <input type="password" class="password" name="password" placeholder="Password" required>
                 <span class="passwordS"></span>
                 <button class="login" type="submit">Login</button>
             </form>
-
+            
             <div class="signup">
                 Not a member? <a href="sign.php">Sign Up</a>
             </div>
 
         </div>
-
-        <!-- <div class="MainGallery">
-            <div class="Gallery1"></div>
-            <div class="Gallery2"></div>
-            <div class="Gallery3"></div>
-            <div class="Gallery4"></div>
-        </div> -->
 
     </main>
 

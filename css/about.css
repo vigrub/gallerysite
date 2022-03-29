@@ -1,0 +1,135 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@font-face {
+  font-family: 'Boldtitle';
+  src:  url('font/NorseBold-2Kge.woff') format('woff');
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  
+  min-height: 100vh;
+  width: 100%;
+  
+  backdrop-filter: blur(2px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background-image 3s ease-in;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  
+  width: auto;
+  height: 100%;
+} 
+
+header{
+  width:100%;
+  
+  display:grid;
+  grid-template-areas: "logo nav space";
+  grid-template-columns: repeat(3, 1fr);
+  
+  background-color: rgba(57,67,89,0.8);
+  border-bottom: 1.5px solid black;
+}
+
+header h1{
+  grid-area:logo;
+  margin:0.5em;
+  
+  justify-content:left;
+  text-align:left;
+  
+  color:rgb(243, 235, 235);
+  font-family: "Boldtitle";
+}
+
+header a{
+  text-decoration: none;
+  font-size: large;
+}
+
+.about{
+  display: flex;
+  flex-direction: column;
+  
+  margin-right:1em;
+  padding: 30px;
+  width: 800px;
+  height: 450px;
+  border-radius: 20px;
+  
+  justify-content: flex-start;
+  align-items: left;
+
+  background-color: rgba(57,67,89);
+  border: solid black 2.5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+nav{
+  width:100%;
+  display: grid;
+
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  
+  grid-area: nav;
+  gap:4.5em;
+}
+
+nav a{
+  display: inline-block;
+  position: relative;
+
+  font-size: large;
+  color:rgb(221, 220, 220);
+  text-decoration: none;
+}
+
+nav a:after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  
+  background-color: orange;
+  
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+nav :not(.selected):hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+nav .selected:after{
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.text{
+  color:white;
+  padding:50px;
+}
+
+.text h2{
+  padding-bottom: 40px;
+  color: orange;
+}

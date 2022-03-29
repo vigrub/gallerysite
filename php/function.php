@@ -7,6 +7,12 @@
         return $connect;
         }
 
+    function saltingHash($password, $username){
+        // Premade salt with ben added because: bensecurity
+        $salt = $username . "ben";
+        $hashed = md5($password . $salt);
+        return $hashed;
+    }
 
 
 
