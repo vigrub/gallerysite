@@ -18,7 +18,7 @@
     <header>
         <a href="index.php">
             <h1>
-                YourGallery
+                YouGallery
             </h1>
         </a>
 
@@ -34,11 +34,11 @@
         <div class="about">
             <div class="text">
 
-                <h2>
+                <h1>
                     About Us
-                </h2>
+                </h1>
 
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi doloremque sint esse ratione repellat
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi doloremque sint esse ratione repellat
                 placeat vel tempora ex dolore eos molestias quia optio quisquam quas voluptatem autem aperiam, illo
                 eligendi.
                 Quas dignissimos, nobis optio quam, molestias perferendis voluptatem excepturi at, rem omnis quidem
@@ -48,7 +48,7 @@
                 Aliquam reiciendis accusantium perspiciatis similique accusamus quidem repellendus maxime at laborum
                 odio
                 debitis dicta autem dignissimos eius fugit, hic illo rem sunt doloremque, voluptate, est voluptatum
-                inventore. Velit, quisquam inventore.
+                inventore. Velit, quisquam inventore.</p>
 
             </div>
 

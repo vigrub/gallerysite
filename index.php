@@ -33,7 +33,7 @@
     <header>
         <a href="index.php">
             <h1>
-            YourGallery
+            YouGallery
             </h1>
         </a>
 
@@ -47,6 +47,7 @@
     <main>
 
         <div class="loginbar">
+        
             <h1>Welcome</h1>
 
             <form class="wrap" method="Post" action="index.php">

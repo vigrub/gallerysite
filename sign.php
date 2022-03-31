@@ -18,7 +18,7 @@
     <header>
         <a href="index.php">
             <h1>
-                YourGallery
+                YouGallery
             </h1>
         </a>
         <nav>
