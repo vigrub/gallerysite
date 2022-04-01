@@ -35,9 +35,9 @@
             <h1>Register now</h1>
 
             <form action="sign.php" method="post" class="wrap">
-                <input class="username" name="Username" type=”text” placeholder="Username">
+                <input class="username" name="Username" type=”text” placeholder="Username" required>
                 <span class="usernameS"></span>
-                <input type="password" class="password" name="Password" placeholder="Password">
+                <input type="password" class="password" name="Password" placeholder="Password" required>
                 <span class="passwordS"></span>
                 <button class="login" type="submit">Sign up</button>
             </form>
@@ -48,7 +48,6 @@
         </div>
 
     </main>
-
 
 </body>
 

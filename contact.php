@@ -12,7 +12,6 @@
     <script src="js/scriptcontact.js" defer></script>
     <title>Document</title>
 
-
 </head>
 
 <body>
@@ -33,6 +32,7 @@
     </header>
 
     <main>
+
         <div class="contact">
 
             <h1>Contact Us</h1>
@@ -42,16 +42,18 @@
                 <p>Phone: 000 111 22 33</p>
                 <p>Location: Möckelngymnasiet</p>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="300" height="147.054" viewBox="0 0 300 147.054">
-                <path id="Path_1" data-name="Path 1" d="M300,36.714V180H0Z" transform="translate(0 -32.946)"
-                    fill="#e3bf31" />
-                <path id="Path_2" data-name="Path 2" d="M173.352,120.957,0,56.38V203.434Z"
-                    transform="translate(0 -56.38)" fill="#91c3e9" />
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="300" height="197.293" viewBox="0 0 300 197.293">
+                <path id="Path_1" data-name="Path 1" d="M299.679,8.192V205.485H-.184Z"
+                    transform="translate(0.321 -8.192)" fill="rgba(57,67,89,0.8)" />
+                <path id="Path_2" data-name="Path 2" d="M163.158,133.24-17.384,54.616V251.909h0Z"
+                    transform="translate(17.384 -54.616)" fill="rgba(0,198,188,0.8)" />
             </svg>
 
         </div>
 
     </main>
+
 </body>
 
 </html>

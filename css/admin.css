@@ -86,7 +86,7 @@ nav a:after{
     left: 0;
     transform: scaleX(0);
     
-    background-color: orange;
+    background-color: #00C6BC;
     
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
