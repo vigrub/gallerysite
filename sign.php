@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+require_once("php/function.php");
+
+if ($_SERVER["REQUEST_METHOD"] === "POST"){
+    $username = $_POST["username"] ?? "";
+    $password = $_POST["password"] ?? "";
+    if ($username !== "" && $password !== ""){
+        addUser($username, $password);
+    }
+}
+
+?>
+
 <head>
 
     <meta charset="UTF-8">
@@ -35,18 +48,17 @@
             <h1>Register now</h1>
 
             <form action="sign.php" method="post" class="wrap">
-                <input class="username" name="Username" type=”text” placeholder="Username" required>
+                <input class="username" name="username" type=”text” placeholder="Username" required>
                 <span class="usernameS"></span>
-                <input type="password" class="password" name="Password" placeholder="Password" required>
+                <input type="password" class="password" name="password" placeholder="Password" required>
                 <span class="passwordS"></span>
-                <button class="login" type="submit">Sign up</button>
+                <button name="submit" class="login" type="submit" value="Sign Up">Sign Up</button>
             </form>
 
             <div class="signup">
                 Already a member? <a href="index.php">Log in</a>
             </div>
         </div>
-
     </main>
 
 </body>

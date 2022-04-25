@@ -5,10 +5,9 @@
         $username = $_POST["username"] ?? "";
         $password = $_POST["password"] ?? "";
         if ($username !== "" && $password !== ""){
-            
-            $password = saltingHash($password, $username);
-
+            login($username, $password);
         }
+        
     }
 ?>
 
@@ -63,7 +62,10 @@
             </div>
 
         </div>
-
+        <form action="destroy.php" method="post">
+            <input type="submit" value="DESTROY">
+        </form>
+        <?= var_dump($_SESSION) ?>
     </main>
 
 </body>
