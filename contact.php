@@ -1,3 +1,5 @@
+<?php require_once("php/function.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +30,15 @@
             <a href="about.php">About</a>
             <a href="contact.php" class="selected">Contact</a>
         </nav>
+
+        <?php
+        // Checks if session is set else false
+        $loggedin = $_SESSION["loggedin"] ?? false;
+        if ($loggedin === true) { ?>
+        <form action="destroy.php" method="post">
+            <input type="submit" value="DESTROY">
+        </form>
+        <?php } ?>
 
     </header>
 

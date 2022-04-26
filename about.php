@@ -1,3 +1,5 @@
+<?php require_once("php/function.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,6 +30,15 @@
             <a href="contact.php">Contact</a>
         </nav>
 
+        <?php
+        // Checks if session is set else false
+        $loggedin = $_SESSION["loggedin"] ?? false;
+        if ($loggedin === true) { ?>
+        <form action="destroy.php" method="post">
+            <input type="submit" value="DESTROY">
+        </form>
+        <?php } ?>
+
     </header>
 
     <main>
@@ -38,17 +49,18 @@
                     About Us
                 </h1>
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi doloremque sint esse ratione repellat
-                placeat vel tempora ex dolore eos molestias quia optio quisquam quas voluptatem autem aperiam, illo
-                eligendi.
-                Quas dignissimos, nobis optio quam, molestias perferendis voluptatem excepturi at, rem omnis quidem
-                asperiores quod minima quia ad unde suscipit quisquam repudiandae laudantium sequi alias consequatur
-                quos.
-                Est, nesciunt ea.
-                Aliquam reiciendis accusantium perspiciatis similique accusamus quidem repellendus maxime at laborum
-                odio
-                debitis dicta autem dignissimos eius fugit, hic illo rem sunt doloremque, voluptate, est voluptatum
-                inventore. Velit, quisquam inventore.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi doloremque sint esse ratione
+                    repellat
+                    placeat vel tempora ex dolore eos molestias quia optio quisquam quas voluptatem autem aperiam, illo
+                    eligendi.
+                    Quas dignissimos, nobis optio quam, molestias perferendis voluptatem excepturi at, rem omnis quidem
+                    asperiores quod minima quia ad unde suscipit quisquam repudiandae laudantium sequi alias consequatur
+                    quos.
+                    Est, nesciunt ea.
+                    Aliquam reiciendis accusantium perspiciatis similique accusamus quidem repellendus maxime at laborum
+                    odio
+                    debitis dicta autem dignissimos eius fugit, hic illo rem sunt doloremque, voluptate, est voluptatum
+                    inventore. Velit, quisquam inventore.</p>
 
             </div>
 

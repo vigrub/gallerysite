@@ -56,6 +56,12 @@ header h1 {
   font-family: "Boldtitle";
 }
 
+header form {
+  grid-area: space;
+  align-self: center;
+  justify-self: center;
+}
+
 header a {
   text-decoration: none;
   font-size: large;

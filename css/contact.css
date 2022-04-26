@@ -37,6 +37,12 @@ header {
     border-bottom: 1.5px solid black;
 }
 
+header form {
+    grid-area: space;
+    align-self: center;
+    justify-self: center;
+}
+
 header h1 {
     grid-area: logo;
     margin: 0.5em;
