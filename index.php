@@ -55,9 +55,11 @@
         <?php
         
         if ($loggedin === true) { ?>
+
         <form action="destroy.php" method="post">
             <input type="submit" value="DESTROY">
         </form>
+
         <?php } ?>
 
     </header>
@@ -65,9 +67,11 @@
     <main>
 
         <?php if ($loggedin === false) { ?>
+
         <div class="loginbar">
 
             <h1>Welcome</h1>
+
             <form class="wrap" method="Post" action="index.php">
                 <input class="username" name="username" type=”text” placeholder="Username" required>
                 <span class="usernameS"></span>
@@ -75,6 +79,7 @@
                 <span class="passwordS"></span>
                 <button class="login" type="submit">Login</button>
             </form>
+
             <div class="signup">
                 Not a member? <a href="sign.php">Sign Up</a>
             </div>
@@ -83,27 +88,37 @@
 
         <?php } elseif($loggedin === true) {?>
 
-        <ul class="gallery">
-            <li class="item1">
-                <div class="bg"></div>
-            </li>
-            <li class="item2">
-                <div class="bg"></div>
-            </li>
-            <li class="item3">
-                <div class="bg"></div>
-            </li>
-            <li class="item4">
-                <div class="bg"></div>
-            </li>
-            <li class="item5">
-                <div class="bg"></div>
-            </li>
-        </ul>
+        <div class="wrap">
+            <ul class="gallery">
+                <li class="item1">
+                    <div class="bg"></div>
+                </li>
+                <li class="item2">
+                    <div class="bg"></div>
+                </li>
+                <li class="item3">
+                    <div class="bg"></div>
+                </li>
+                <li class="item4">
+                    <div class="bg"></div>
+                </li>
+                <li class="item5">
+                    <div class="bg"></div>
+                </li>
+            </ul>
+        </div>
 
         <?php } ?>
 
     </main>
+
+    <?php if($loggedin === true) {?>
+
+    <footer>
+        <p>&copy; YouGallery <?=date("Y")?></p>
+    </footer>
+
+    <?php } ?>
 
 </body>
 
