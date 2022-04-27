@@ -24,6 +24,7 @@
 
     <link href="sign.php" rel="prerender">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <?php if($loggedin){ ?>
     <link rel="stylesheet" href="css/gallery.css">
@@ -57,7 +58,7 @@
         if ($loggedin === true) { ?>
 
         <form action="destroy.php" method="post">
-            <input type="submit" value="DESTROY">
+            <input type="submit" value="Logout">
         </form>
 
         <?php } ?>
@@ -106,6 +107,7 @@
                     <div class="bg"></div>
                 </li>
             </ul>
+
         </div>
 
         <?php } ?>
@@ -116,6 +118,9 @@
 
     <footer>
         <p>&copy; YouGallery <?=date("Y")?></p>
+        <a href="index.php" class="selected">Home</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact</a>
     </footer>
 
     <?php } ?>

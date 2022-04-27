@@ -32,24 +32,20 @@ header {
 }
 
 footer {
-    background-color: #394359;
-    border-top: 2px solid black;
+    display: flex;
+    background-color: rgb(22, 20, 20);
     min-height: 20vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .gallery {
     position: relative;
     display: flex;
     flex-direction: row;
-    /* flex-grow: 1; */
+
     height: 50%;
     width: 75%;
-    /* position: absolute; */
-    /* left: 50%; */
-
-    /* transform: translate(-50%, -50%); */
-    /* width: 900px;
-    height: 250px; */
 }
 
 .gallery li {
@@ -130,4 +126,32 @@ footer {
     background-image: url("../javaimg/northgard7.jpg");
     background-size: cover;
     background-position: center;
+}
+
+header form input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid transparent;
+    border-radius: 6px;
+
+    color: #C62326;
+    background-color: transparent;
+
+    cursor: pointer;
+    font-size: medium;
+    transition: background-color 100ms linear, border 100ms linear;
+}
+
+p {
+    color: white;
+    font-size: medium;
+}
+
+a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
 }
