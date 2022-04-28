@@ -12,6 +12,7 @@ body {
 
 main {
     flex-grow: 1;
+    background-image: url("javaimg/background1.jpg");
 }
 
 .wrap {
@@ -29,14 +30,6 @@ main {
 header {
     background-color: #394359;
     border-bottom: 2px solid black;
-}
-
-footer {
-    display: flex;
-    background-color: rgb(22, 20, 20);
-    min-height: 20vh;
-    justify-content: center;
-    align-items: center;
 }
 
 .gallery {
@@ -144,14 +137,29 @@ header form input {
     transition: background-color 100ms linear, border 100ms linear;
 }
 
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 20vh;
+
+    background-color: rgb(22, 20, 20);
+}
+
 p {
     color: white;
     font-size: medium;
 }
 
-a {
+.bottomnav {
     display: flex;
-    flex-direction: column;
+    margin-top: 1em;
+    gap: 2em;
+}
+
+.bottomnav a {
     text-decoration: none;
     color: white;
 }

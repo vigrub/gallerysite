@@ -118,9 +118,11 @@
 
     <footer>
         <p>&copy; YouGallery <?=date("Y")?></p>
-        <a href="index.php" class="selected">Home</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact</a>
+        <div class="bottomnav">
+            <a href="index.php" class="selected">Home</a>
+            <a href="about.php">About</a>
+            <a href="contact.php">Contact</a>
+        </div>
     </footer>
 
     <?php } ?>
