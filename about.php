@@ -31,12 +31,15 @@
         </nav>
 
         <?php
+        
         // Checks if session is set else false
         $loggedin = $_SESSION["loggedin"] ?? false;
         if ($loggedin === true) { ?>
+
         <form action="destroy.php" method="post">
-            <input type="submit" value="DESTROY">
+            <input type="submit" value="Logout">
         </form>
+
         <?php } ?>
 
     </header>

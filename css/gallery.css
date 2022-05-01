@@ -12,7 +12,6 @@ body {
 
 main {
     flex-grow: 1;
-    background-image: url("javaimg/background1.jpg");
 }
 
 .wrap {
@@ -24,12 +23,27 @@ main {
 
     height: 100vh;
     margin-block: 1em;
-
 }
 
 header {
     background-color: #394359;
     border-bottom: 2px solid black;
+}
+
+header form input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2px solid transparent;
+    border-radius: 6px;
+
+    color: #dc143c;
+    background-color: transparent;
+
+    cursor: pointer;
+    font-size: large;
+    transition: background-color 100ms linear, border 100ms linear;
 }
 
 .gallery {
@@ -121,22 +135,6 @@ header {
     background-position: center;
 }
 
-header form input {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    border: 2px solid transparent;
-    border-radius: 6px;
-
-    color: #C62326;
-    background-color: transparent;
-
-    cursor: pointer;
-    font-size: medium;
-    transition: background-color 100ms linear, border 100ms linear;
-}
-
 footer {
     display: flex;
     flex-direction: column;
@@ -156,10 +154,16 @@ p {
 .bottomnav {
     display: flex;
     margin-top: 1em;
-    gap: 2em;
+    gap: 3em;
 }
 
 .bottomnav a {
     text-decoration: none;
+    color: grey;
+
+    transition: color 100ms linear;
+}
+
+.bottomnav a:hover {
     color: white;
 }

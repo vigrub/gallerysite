@@ -43,6 +43,12 @@ header {
 
   background-color: rgba(57, 67, 89, 0.8);
   border-bottom: 1.5px solid black;
+
+  transition: background-color 100ms linear;
+}
+
+header:hover {
+  background-color: rgb(57, 67, 89);
 }
 
 header h1 {
@@ -60,6 +66,22 @@ header form {
   grid-area: space;
   align-self: center;
   justify-self: center;
+}
+
+header form input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid transparent;
+  border-radius: 6px;
+
+  color: #dc143c;
+  background-color: transparent;
+
+  cursor: pointer;
+  font-size: large;
+  transition: background-color 100ms linear, border 100ms linear;
 }
 
 header a {

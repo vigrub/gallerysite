@@ -91,6 +91,7 @@
 
         <div class="wrap">
             <ul class="gallery">
+
                 <li class="item1">
                     <div class="bg"></div>
                 </li>
@@ -105,9 +106,8 @@
                 </li>
                 <li class="item5">
                     <div class="bg"></div>
-                </li>
-            </ul>
 
+            </ul>
         </div>
 
         <?php } ?>
