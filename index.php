@@ -51,6 +51,7 @@
             <a href="index.php" class="selected">Home</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact</a>
+            <a href="php/uploadimg.php">Upload</a>
         </nav>
 
         <?php
@@ -86,29 +87,86 @@
             </div>
 
         </div>
-
+        <div id="output"></div>
         <?php } elseif($loggedin === true) {?>
+        <?php 
+            $sql = "SELECT * FROM tblgallery"; #tblgallery
+            // Echo out the sql query results
+            $conn = sqliConnect("yougallery");
+            $result = $conn->query($sql);
+            $conn->close();
+            $rows = Array();
+            while($row = $result->fetch_array(MYSQLI_ASSOC)) {
+                $rows[] = $row;
+                }
+            
+            $rows = json_encode($rows);
+        ?>
 
-        <div class="wrap">
-            <ul class="gallery">
 
-                <li class="item1">
-                    <div class="bg"></div>
-                </li>
-                <li class="item2">
-                    <div class="bg"></div>
-                </li>
-                <li class="item3">
-                    <div class="bg"></div>
-                </li>
-                <li class="item4">
-                    <div class="bg"></div>
-                </li>
-                <li class="item5">
-                    <div class="bg"></div>
-
-            </ul>
+        <!-- Buttons, previous and next. That change the js var page -->
+        <div class="pageSelector">
+            <button class="prev" onclick="prevPage()">&#10094;</button>
+            <!-- Current page / last page -->
+            <span class="page" id="spanPage">1</span>
+            <span class="of">/</span>
+            <!-- Total pages -->
+            <span class="totalPages" id="spanTotalPages">1</span>
+            <button class="next" onclick="nextPage()">&#10095;</button>
         </div>
+        <div class="grid-container" id="gallery">
+
+
+        </div>
+        <!-- Send $rows to generateGallery function -->
+        <script defer>
+        console.log(<?php echo $rows; ?>);
+        let page = 0;
+        let imgCount = 6
+
+
+        function generateGallery(json_data) {
+            var gallery = document.getElementById("gallery");
+            // Reset the gallery
+            gallery.innerHTML = "";
+
+            // for (var i = 0; i < json_data.length; i++) {
+            //     var div = document.createElement("div");
+            //     div.style.backgroundImage = "url(" + json_data[i].path + ")";
+            //     div.className = "grid-item";
+            //     gallery.appendChild(div);
+            // }
+
+            // Generate from index, depending on page//start from page=1, maximum of 18 images per page
+            var start = (page) * imgCount;
+            var end = start + imgCount;
+            for (var i = start; i < end; i++) {
+                console.log(json_data[i].path);
+                var div = document.createElement("div");
+                div.style.backgroundImage = "url(" + json_data[i].path + ")";
+                div.className = "grid-item";
+                gallery.appendChild(div);
+            }
+
+        }
+
+        function prevPage() {
+            if (page > 0) {
+                page--;
+                generateGallery(<?php echo $rows; ?>);
+            }
+        }
+
+        function nextPage() {
+            if (page < Math.ceil(<?php echo $rows; ?>.length / imgCount) - 1) {
+                page++;
+                generateGallery(<?php echo $rows; ?>);
+            }
+        }
+
+        // Generate the gallery
+        generateGallery(<?php echo $rows; ?>);
+        </script>
 
         <?php } ?>
 

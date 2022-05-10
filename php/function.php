@@ -2,6 +2,9 @@
 
     session_start();
 
+    // Checks if session is set else false
+    $loggedin = $_SESSION["loggedin"] ?? false;
+
     function sqliConnect($dbname, $dbserver="localhost", $dbuser="root", $dbpass=""){
         $connect = mysqli_connect($dbserver,$dbuser,$dbpass,$dbname);
         return $connect;

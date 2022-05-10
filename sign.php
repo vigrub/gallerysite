@@ -46,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         <div class="loginbar">
 
             <h1>Register now</h1>
-
             <form action="sign.php" method="post" class="wrap">
                 <input class="username" name="username" type=”text” placeholder="Username" required>
                 <span class="usernameS"></span>
@@ -59,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 Already a member? <a href="index.php">Log in</a>
             </div>
         </div>
+
     </main>
 
 </body>
