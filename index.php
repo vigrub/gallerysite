@@ -1,6 +1,7 @@
 <?php 
     require_once("php/function.php");
 
+    // Check if tried to login, calls login function
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
         $username = $_POST["username"] ?? "";
         $password = $_POST["password"] ?? "";
@@ -11,7 +12,66 @@
     }
     // Checks if session is set else false
     $loggedin = $_SESSION["loggedin"] ?? false;
+    
+    // If file uploaded, upload it to gallery
+    if ($_SERVER["REQUEST_METHOD"] === "POST"){
+        if (isset($_POST["submit"])) {
+            // Make sure the file form is set
+            if (isset($_FILES["file"])) {
+                if ($_POST["formRand"] === strval($_SESSION["formRand"])){
+                $username = $_SESSION["username"];
+                $file = $_FILES["file"];
+                $filepath = $_FILES["file"]["tmp_name"];
+                $filesize = filesize($filepath);
+                $fileinfo = finfo_open(FILEINFO_MIME_TYPE);
+                if (!empty($fileinfo)){
+                    $filetype = finfo_file($fileinfo, $filepath);
+                }
+                if ($filetype === "image/jpeg" || $filetype === "image/png" || $filetype === "image/jpg") {
+                    // Max 20mb
+                    if ($filesize < 20971520) {
+                        $filename = $_FILES["file"]["name"];
+                        $gallerypath = "./gallery/".$username;
+                        
+                        // Check if gallery exists, else create it
+                        if (!file_exists($gallerypath)) {
+                            mkdir($gallerypath);
+                        }
+    
+                        // Name the file with current date and time and hash with username
+                        $newfilename = date("Y-m-d-H-i-s") . "-" . $username . "-" . hash("sha1", $username) . "-" . $filename;
+                        
+                        // Move the file to the gallery under username dir
+                        move_uploaded_file($filepath, $gallerypath . "/" . $newfilename);
+    
+                        // Write to db tblgallery (title, description, path, username)
+                        $title = $_POST["title"];
+                        $description = $_POST["description"];
+                        // Check if description is longer than 255, takes the first 255 characters
+                        if (strlen($description) > 255) {
+                            $description = substr($description, 0, 255);
+                        }
+                        
+                        $path = $gallerypath . "/" . $newfilename;
+                        // Remove ../ from path
+                        $path = str_replace("./", "", $path);
+                        $username = $_SESSION["username"];
+                        $sql = "INSERT INTO tblgallery (title, description, path, username) VALUES ('$title', '$description', '$path', '$username')";
+                        $conn = sqliConnect("yougallery");
+                        $result = mysqli_query($conn, $sql);
+                        
+                    }
+                }
+            } else {
+                $file = null;
+            }
+        }
+        } else {
+            $file = null;
+        }
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +111,6 @@
             <a href="index.php" class="selected">Home</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact</a>
-            <a href="php/uploadimg.php">Upload</a>
         </nav>
 
         <?php
@@ -87,11 +146,14 @@
             </div>
 
         </div>
+
         <div id="output"></div>
+
         <?php } elseif($loggedin === true) {?>
-        <?php 
-            $sql = "SELECT * FROM tblgallery"; #tblgallery
-            // Echo out the sql query results
+
+        <?php
+            $username = $_SESSION["username"]; 
+            $sql = "SELECT * FROM `tblgallery` WHERE username='$username'"; #tblgallery
             $conn = sqliConnect("yougallery");
             $result = $conn->query($sql);
             $conn->close();
@@ -103,14 +165,25 @@
             $rows = json_encode($rows);
         ?>
 
+        <form action="index.php" method="post" enctype="multipart/form-data">
 
-        <!-- Buttons, previous and next. That change the js var page -->
+            <?php
+            // Prevent refresh and submitting form again (duplicate)
+            $formRand = rand(0, 99999);
+            $_SESSION["formRand"] = $formRand;
+            ?>
+            <input type="text" placeholder="Title of image..." name="title" required>
+            <textarea type="text" placeholder="Description of image..." name="description" maxlength=255
+                required></textarea>
+            <input type="file" name="file" id="file" required>
+            <input type="hidden" name="formRand" value="<?php echo $formRand; ?>">
+            <input type="submit" value="Upload File" name="submit">
+        </form>
+
         <div class="pageSelector">
             <button class="prev" onclick="prevPage()">&#10094;</button>
-            <!-- Current page / last page -->
-            <span class="page" id="spanPage">1</span>
+            <span class="page" id="spanCurrentPage">1</span>
             <span class="of">/</span>
-            <!-- Total pages -->
             <span class="totalPages" id="spanTotalPages">1</span>
             <button class="next" onclick="nextPage()">&#10095;</button>
         </div>
@@ -118,9 +191,16 @@
 
 
         </div>
-        <!-- Send $rows to generateGallery function -->
+
+        <div class="pageSelector">
+            <button class="prev" onclick="prevPage()">&#10094;</button>
+            <span class="page" id="spanCurrentPage" class="CurrPage">1</span>
+            <span class="of">/</span>
+            <span class="totalPages" id="spanTotalPages" class="TotPage">1</span>
+            <button class="next" onclick="nextPage()">&#10095;</button>
+        </div>
+
         <script defer>
-        console.log(<?php echo $rows; ?>);
         let page = 0;
         let imgCount = 6
 
@@ -130,18 +210,25 @@
             // Reset the gallery
             gallery.innerHTML = "";
 
-            // for (var i = 0; i < json_data.length; i++) {
-            //     var div = document.createElement("div");
-            //     div.style.backgroundImage = "url(" + json_data[i].path + ")";
-            //     div.className = "grid-item";
-            //     gallery.appendChild(div);
-            // }
+            var spanCurrentPage = document.querySelectorAll("#spanCurrentPage");
+            var spanTotalPages = document.querySelectorAll("#spanTotalPages");
+
+            spanCurrentPage.forEach(function(element) {
+                element.innerHTML = page + 1;
+            });
+            spanTotalPages.forEach(function(element) {
+                if (Math.ceil(json_data.length / imgCount) === 0) {
+                    element.innerHTML = 1;
+                } else {
+                    element.innerHTML = Math.ceil(json_data.length / imgCount);
+                }
+            });
+
 
             // Generate from index, depending on page//start from page=1, maximum of 18 images per page
             var start = (page) * imgCount;
             var end = start + imgCount;
-            for (var i = start; i < end; i++) {
-                console.log(json_data[i].path);
+            for (var i = start; i < end && i < json_data.length; i++) {
                 var div = document.createElement("div");
                 div.style.backgroundImage = "url(" + json_data[i].path + ")";
                 div.className = "grid-item";
@@ -175,12 +262,14 @@
     <?php if($loggedin === true) {?>
 
     <footer>
+
         <p>&copy; YouGallery <?=date("Y")?></p>
         <div class="bottomnav">
             <a href="index.php" class="selected">Home</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact</a>
         </div>
+
     </footer>
 
     <?php } ?>

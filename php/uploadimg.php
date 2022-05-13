@@ -70,7 +70,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 </head>
 
 <body>
-    <!-- Form, Title, Description and Choose File (image) -->
     <form action="uploadimg.php" method="post" enctype="multipart/form-data">
         <input type="text" name="title" required>
         <input type="text" name="description" required>
@@ -78,7 +77,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         <input type="submit" value="Upload File" name="submit">
     </form>
 
-    <!-- Anchor to return to home -->
     <a href="../">Home</a>
 </body>
 

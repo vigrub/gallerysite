@@ -14,6 +14,8 @@ main {
     display: grid;
     grid-area: auto;
     flex-grow: 1;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .wrap {
@@ -49,6 +51,50 @@ header form input {
     transition: background-color 100ms linear, border 100ms linear;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-block: 1em;
+    gap: 1em;
+}
+
+form input[name="title"] {
+    height: 2em;
+    transition: border 100ms linear;
+}
+
+form input[name="title"]:hover {
+    border: 1.5px solid black;
+    border-radius: 3px;
+}
+
+form textarea[name="description"] {
+    height: 6em;
+    transition: border 100ms linear;
+}
+
+form textarea[name="description"]:hover {
+    border: 1.5px solid black;
+    border-radius: 3px;
+}
+
+.pageSelector {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+    margin-block: 1em;
+}
+
+.pageSelector .prev,
+.pageSelector .next {
+    padding: 0.5rem;
+    font-size: 15px;
+}
+
 .grid-container {
     display: grid;
     margin: 2.5em 10em;
@@ -58,16 +104,13 @@ header form input {
     grid-auto-rows: minmax(100px, 300px);
 }
 
-.grid-item:nth-child(n) {
-    /* background-image: url("../javaimg/northgard5.jpg"); */
-    background-size: cover;
-    background-position: center;
-    filter: grayscale(100%);
-}
-
 .grid-item {
     background-color: rgba(255, 255, 255, 0.8);
     border: 5px solid rgba(255, 255, 255, 0.8);
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%);
+
     border-radius: 5px;
     padding: 20px;
     text-align: center;
