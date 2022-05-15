@@ -94,7 +94,6 @@
     <script src="js/indexscript.js" defer></script>
 
     <?php } ?>
-    <title>Document</title>
 
 </head>
 

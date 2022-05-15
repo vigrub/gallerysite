@@ -62,6 +62,8 @@ form {
 
 form input[name="title"] {
     height: 2em;
+    width: 20em;
+    padding: 0.5em;
     transition: border 100ms linear;
 }
 
@@ -72,12 +74,22 @@ form input[name="title"]:hover {
 
 form textarea[name="description"] {
     height: 6em;
+    width: 20em;
+    padding: 0.5em;
     transition: border 100ms linear;
 }
 
 form textarea[name="description"]:hover {
     border: 1.5px solid black;
     border-radius: 3px;
+}
+
+form input[name="submit"] {
+    height: 3em;
+    width: 10em;
+    background-color: #00C6BC;
+    border: none;
+    cursor: pointer;
 }
 
 .pageSelector {

@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $password = $_POST["password"] ?? "";
     if ($username !== "" && $password !== ""){
         addUser($username, $password);
+        header("Location: index.php");
     }
 }
 
